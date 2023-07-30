@@ -26,11 +26,15 @@ export const getAthlete = async () => {
 
 }
 
+export const testGetActivities = async () => {
+  return { name: 'testGetActivities' }
+}
+
 export const getActivities = async () => {
 
-  const access_token = process.env.STRAVA_CLIENT_SECRET || '';
+  const access_token = process.env.NEXT_PUBLIC_STRAVA_CLIENT_SECRET || '';
   const url = `${ATHLETE_ACTIVITIES_ENDPOINT}`
-  
+
   try {
     const response = await fetch(url, {
       headers: {
@@ -59,7 +63,7 @@ export const getActivities = async () => {
       map: activity.map,
     }));
 
-    return activities;
+    return activities[0];
 
   } catch (err) {
     console.log(err);
