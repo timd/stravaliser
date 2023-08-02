@@ -1,7 +1,8 @@
-import { useLoadScript, GoogleMap, Marker, PolylineF, MarkerF } from '@react-google-maps/api';
-import type { NextPage } from 'next';
 import { useMemo } from 'react';
+import type { NextPage } from 'next';
+import { UserButton } from "@clerk/nextjs";
 import styles from '../styles/Home.module.css';
+import { useLoadScript, GoogleMap, Marker, PolylineF, MarkerF } from '@react-google-maps/api';
 
 const Home: NextPage = () => {
   const libraries = useMemo(() => ['places'], []);
@@ -37,8 +38,12 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.homeWrapper}>
-      
-      <GoogleMap
+      <header>
+				<UserButton afterSignOutUrl="/"/>
+			</header>
+      <h1>STRAVELISER</h1>
+      {
+        <GoogleMap
         options={mapOptions}
         zoom={14}
         center={mapCenter}
@@ -49,8 +54,7 @@ const Home: NextPage = () => {
       <MarkerF label={""} position={mapCenter} onLoad={() => console.log('Marker Loaded')} />
       <PolylineF path={triangleCoords} onLoad={() => console.log('Polyline Loaded')} />
       </GoogleMap>
-
-
+      }
     </div>
   );
 };

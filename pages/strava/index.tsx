@@ -1,9 +1,9 @@
-import type { NextPage } from 'next';
-import styles from '../../styles/Home.module.css'
 import Activity from './Activity';
-import { getActivities } from '@/lib/strava';
+import type { NextPage } from 'next';
+import { UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from 'react';
-
+import { getActivities } from '@/lib/strava';
+import styles from '../../styles/Home.module.css'
 
 const Strava: NextPage = () => {
     
@@ -19,7 +19,10 @@ const Strava: NextPage = () => {
 
     return (
         <div className={styles.homeWrapper}>
-            <div>Strava index.tsx</div>
+            <div>Strava</div>
+            <header>
+				<UserButton afterSignOutUrl="/"/>
+			</header>
             <Activity
                 activity={ activity }
             />

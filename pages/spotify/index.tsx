@@ -1,8 +1,14 @@
 import type { NextPage } from 'next';
+import { UserButton } from "@clerk/nextjs";
 
 const Spotify: NextPage = () => {
     return (
-        <div>Spotify</div>
+        <div>
+            <header>
+				<UserButton afterSignOutUrl="/"/>
+			</header>
+            <div>Spotify</div>
+        </div>
     )
 }
 
